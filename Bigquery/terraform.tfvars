@@ -1,0 +1,5 @@
+project_id     = "your-gcp-project-id"
+dataset_id     = "my_new_dataset"
+friendly_name  = "My New BigQuery Dataset"
+description    = "This is a dataset created by Terraform."
+location       = "US"
