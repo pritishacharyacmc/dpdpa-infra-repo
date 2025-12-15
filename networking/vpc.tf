@@ -7,11 +7,11 @@ resource "google_compute_network" "main" {
 }
 
 resource "google_compute_subnetwork" "private" {
-  project               = var.project_id
-  name                  = var.subnetwork_name
-  primary_ip_cidr_range = var.primary_ip_cidr_range
-  region                = var.region
-  network                  = google_compute_network.main.id
+  project                  = var.project_id
+  name                     = var.subnetwork_name
+  region                   = var.region
+  network                  = google_compute_network.main.name
+  ip_cidr_range            = var.primary_ip_cidr_range
   private_ip_google_access = var.private_ip_google_access
 
   secondary_ip_range {

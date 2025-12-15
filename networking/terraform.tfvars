@@ -20,9 +20,9 @@ region                   = "us-central1"
 private_ip_google_access = true
 
 # Secondary IP ranges for GKE
-pod_range_name     = "k8s-pod-range"
-pod_range_ip_cidr  = "10.48.0.0/14"
-service_range_name = "k8s-service-range"
+pod_range_name        = "k8s-pod-range"
+pod_range_ip_cidr     = "10.48.0.0/14"
+service_range_name    = "k8s-service-range"
 service_range_ip_cidr = "10.52.0.0/20"
 
 # ------------------------------------------------------------------------------
