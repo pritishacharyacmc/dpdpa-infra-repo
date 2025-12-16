@@ -1,0 +1,35 @@
+# app_deployment.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-gke-app-service
+  annotations:
+    cloud.google.com/neg: '{"exposed_ports": {"80":{"name": "my-gke-app-neg"}}}' # This name must match `gke_neg_name` in terraform.tfvars
+spec:
+  type: ClusterIP
+  selector:
+    app: my-gke-app
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-gke-app-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: my-gke-app
+  template:
+    metadata:
+      labels:
+        app: my-gke-app
+    spec:
+      containers:
+      - name: hello-app
+        image: us-docker.pkg.dev/google-samples/containers/gke/hello-app:1.0
+        ports:
+        - containerPort: 8080

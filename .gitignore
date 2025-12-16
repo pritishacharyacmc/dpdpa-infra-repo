@@ -1,0 +1,56 @@
+# .gitignore for Terraform
+
+# Local Terraform state files
+# These files may contain sensitive information and are specific to a local workspace.
+# If you are using a remote backend (like S3, GCS, or Terraform Cloud),
+# which is highly recommended, these files won't be created locally for your main state.
+*.tfstate
+*.tfstate.backup
+
+# Terraform plan files
+# Plan files can expose sensitive variable values. It's better to generate them
+# on-the-fly in your CI/CD pipeline.
+*.tfplan
+
+# Terraform provider plugins and modules
+# This directory is created by `terraform init` and contains the downloaded
+# provider plugins and modules. These should be fetched by each user/system
+# running `terraform init`.
+.terraform/
+
+# Crash log files
+# These are generated if Terraform crashes and are useful for debugging, but not for version control.
+crash.log
+crash.*.log
+
+# Terraform Cloud/Enterprise credentials
+# These files can contain authentication tokens.
+terraform.rc
+*.terraform.rc
+*.terraform.lock.hcl
+
+# Variable definition files
+# It's a best practice to ignore `.tfvars` files to avoid committing sensitive
+# values like passwords or API keys. Instead, commit a `.tfvars.example` file.
+*.tfvars
+*.tfvars.json
+*.auto.tfvars
+*.auto.tfvars.json
+
+# Override files
+# These are used to override parts of your configuration, often for local testing.
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# CLI configuration files
+.terraformrc
+
+# Terragrunt-specific files (if you use Terragrunt)
+.terragrunt-cache/
+*.terragrunt-cache.lock
+
+# Fuzzy temporary files
+._*.tf
+._*.tf.json
