@@ -29,7 +29,7 @@ resource "google_compute_subnetwork" "host_subnet" {
   private_ip_google_access = true
 }
 
-# 4. Cloud Router (as shown in diagram)
+# 4. Cloud Router
 resource "google_compute_router" "router" {
   name    = "shared-vpc-router"
   project = var.host_project_id
@@ -41,7 +41,7 @@ resource "google_compute_router" "router" {
   }
 }
 
-# 5. Cloud Cloud DNS Zone (as shown in diagram)
+# 5. Cloud DNS Zone 
 resource "google_dns_managed_zone" "private_zone" {
   name        = "shared-vpc-private-zone"
   project     = var.host_project_id
