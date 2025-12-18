@@ -24,7 +24,8 @@ variable "gcp_service_list" {
     "container.googleapis.com",           # GKE API
     "bigquery.googleapis.com",            # BigQuery API
     "monitoring.googleapis.com",          # Cloud Monitoring API
-    "dataplex.googleapis.com"             # Cloud Dataplex API
+    "dataplex.googleapis.com",            # Cloud Dataplex API
+    "cloudkms.googleapis.com"             # Cloud Key Management Service (KMS) API
   ]
 }
 
