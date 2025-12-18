@@ -30,5 +30,5 @@ resource "google_project_iam_custom_role" "data_steward" {
 resource "google_project_iam_member" "assign_data_steward" {
   project = "your-project-id" # Replace with your actual project ID
   role    = google_project_iam_custom_role.data_steward.id
-  member  = "user:someone@example.com" # Replace with the user's email
+  group  = "user:someone@example.com" # Replace with the group's email
 }
