@@ -118,6 +118,8 @@ data "google_project" "host_project" {
   project_id = var.host_project_id
 }
 
+
+# Enable VPC Service Control policies
 # 1. Access Policy
 # NOTE: An Organization can only have ONE Access Policy.
 # If one already exists, use 'data "google_access_context_manager_access_policy"' instead of creating a new one.
