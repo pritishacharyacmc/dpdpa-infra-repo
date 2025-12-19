@@ -6,7 +6,7 @@ variable "project_id" {
 variable "region" {
   description = "The region for the KMS keys and resources"
   type        = string
-  default     = "us-central1"
+  default     = "asia-south1"
 }
 
 # 1. Enable the Cloud KMS API
@@ -19,7 +19,7 @@ resource "google_project_service" "kms" {
 
 # 2. Create the KeyRing
 resource "google_kms_key_ring" "keyring" {
-  name     = "my-secure-keyring"
+  name     = "dpdpa-secure-keyring"
   location = var.region
   project  = var.project_id
 
@@ -28,7 +28,7 @@ resource "google_kms_key_ring" "keyring" {
 
 # 3. Create the CryptoKey
 resource "google_kms_crypto_key" "my_crypto_key" {
-  name            = "my-secure-key"
+  name            = "dpdpa-secure-key"
   key_ring        = google_kms_key_ring.keyring.id
   rotation_period = "7776000s" # 90 days
 
@@ -67,7 +67,7 @@ resource "google_kms_crypto_key_iam_binding" "gcs_encryption" {
 
 # 6. Create a Storage Bucket using the CMEK key
 resource "google_storage_bucket" "secure_bucket" {
-  name          = "my-cmek-protected-bucket-${var.project_id}"
+  name          = "dpdpa-cmek-protected-bucket-${var.project_id}"
   location      = var.region
   project       = var.project_id
   force_destroy = true 
