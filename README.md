@@ -1,6 +1,8 @@
 # dpdpa-infra-repo
 Infrastructure Repository for the DPDPA 
 
+Default Region - Asia- South1 
+
 Project Creations structure 
     By default the script deploys the following projects 
         "gcp-org-p-governance",
@@ -38,4 +40,6 @@ Stage 2: Deploy the Load Balancer
     Uncomment the data "google_compute_region_network_endpoint_group" "gke_neg" block in load_balancer.tf.
     Run terraform apply again. Terraform will now find the NEG created in the previous step and build the full load balancer stack.
     After deployment, remember to point your domain's DNS A record to the static IP address created by the google_compute_global_address resource. It may take some time for the SSL certificate to be provisioned and the load balancer to become fully active.
+
+Default Node Configuration -2 Nodes
 
