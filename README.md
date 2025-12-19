@@ -58,7 +58,7 @@ Stage 2: Deploy the Load Balancer
 
 - **Operating System:** Linux or macOS (Bash shell required)
 - **Terraform:** [Install Terraform CLI](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli) and make sure it is accessible in your shell.
-- **Cloud Credentials:** Authenticate with your cloud provider (e.g., Google Cloud SDK, AWS CLI) as required for your environment.
+- **Cloud Credentials:** Authenticate with your cloud provider (e.g., Google Cloud SDK) as required for your environment.
 - **Git:** Install Git if you haven't already.
 
 ---
