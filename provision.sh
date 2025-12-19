@@ -6,7 +6,7 @@
 
 # 1. DEFINE DEPLOYMENT ORDER (Recommended)
 # List your component folder names here in the order they must be deployed.
-# Example: ORDERED_COMPONENTS=("00-bootstrap" "01-network" "02-security" "03-app")
+# Example: ORDERED_COMPONENTS=("00-Project-Creation" "01-SVPC-SC (Networking)" "02-IAM" "03-KMS")
 # If left empty, the script will find all directories containing .tf files alphabetically.
 ORDERED_COMPONENTS=(
   "Project-Creation"
