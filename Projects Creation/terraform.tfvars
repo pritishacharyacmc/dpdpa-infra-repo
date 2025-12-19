@@ -2,8 +2,8 @@
 
 project_names = [
   "gcp-org-p-governance",
-  "gcp-org-p-confidential-data",
-  "gcp-org-p-non-confidential-data",
+  "gcp-org-p-confi-data",
+  "gcp-org-p-non-confi-data",
   "gcp-org-p-privacy-tools",
   "gcp-org-p-reporting"
 ]
