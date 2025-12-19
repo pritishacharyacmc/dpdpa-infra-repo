@@ -127,7 +127,6 @@ Execute from the root directory:
 
 ---
 
-For further details, refer to the repository's main [README.md](README.md).
 
     After deployment, remember to point your domain's DNS A record to the static IP address created by the google_compute_global_address resource. It may take some time for the SSL certificate to be provisioned and the load balancer to become fully active.
 
