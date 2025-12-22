@@ -103,6 +103,19 @@ function deploy_component() {
     cd ..
 }
 
+function prompt_update_tfvars_for_component() {
+    local component=$1
+    echo -e "\n------------------------------------------------------------"
+    log_info "Action Needed for component: ${YELLOW}$component${NC}"
+    echo -e "${YELLOW}[ACTION REQUIRED]${NC} Please update the 'terraform.tfvars' (or corresponding variables) for '$component' if not already done."
+    read -p "Type 'yes' once you have updated the tfvars file for '$component' (or anything else to skip this component during deployment): " update_confirm
+    if [[ "$update_confirm" != "yes" ]]; then
+        log_warn "You indicated 'terraform.tfvars' is not updated for '$component'. The script will skip deploying this component when reached."
+        return 1
+    fi
+    return 0
+}
+
 # ==============================================================================
 # MAIN SCRIPT
 # ==============================================================================
@@ -128,13 +141,37 @@ fi
 echo -e "\n${GREEN}=== Starting Interactive Infrastructure Deployment ===${NC}"
 echo "Found ${#COMPONENTS_TO_PROCESS[@]} components to process."
 
-for component in "${COMPONENTS_TO_PROCESS[@]}"; do
-    # Pre-check: Ask about variables
-    if check_tfvars "$component"; then
-        deploy_component "$component"
+if [ ${#COMPONENTS_TO_PROCESS[@]} -gt 0 ]; then
+    # Deploy the first component immediately
+    FIRST_COMPONENT="${COMPONENTS_TO_PROCESS[0]}"
+    log_info "Deploying the first component: ${YELLOW}$FIRST_COMPONENT${NC}"
+    if check_tfvars "$FIRST_COMPONENT"; then
+        deploy_component "$FIRST_COMPONENT"
     else
-        log_warn "Skipping '$component' because tfvars verification failed."
+        log_warn "Skipping '$FIRST_COMPONENT' because tfvars verification failed."
     fi
-done
+
+    # Prompt for tfvars update for the rest
+    REST_COMPONENTS=("${COMPONENTS_TO_PROCESS[@]:1}")
+
+    for component in "${REST_COMPONENTS[@]}"; do
+        prompt_update_tfvars_for_component "$component"
+    done
+
+    # Deploy the remaining components
+    for component in "${REST_COMPONENTS[@]}"; do
+        # Only proceed if user confirmed tfvars were updated for this component
+        if [ -d "$component" ]; then
+            # Optionally, you can check again if tfvars is updated by rerunning check_tfvars here
+            if check_tfvars "$component"; then
+                deploy_component "$component"
+            else
+                log_warn "Skipping '$component' because tfvars verification failed."
+            fi
+        else
+            log_warn "Directory '$component' not found. Skipping..."
+        fi
+    done
+fi
 
 echo -e "\n${GREEN}=== Deployment Script Completed ===${NC}"
