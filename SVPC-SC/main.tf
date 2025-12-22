@@ -113,7 +113,7 @@ resource "google_compute_subnetwork_iam_member" "compute_sa_network_user" {
   role       = "roles/compute.networkUser"
   member     = "serviceAccount:${data.google_project.service_projects[each.key].number}-compute@developer.gserviceaccount.com"
 }
-Get Host Project Number (Required for VPC-SC)
+# Get Host Project Number (Required for VPC-SC)
 data "google_project" "host_project" {
   project_id = var.host_project_id
 }
