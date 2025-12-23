@@ -6,6 +6,8 @@ project_names = [
   "gcp-org-p-non-confi-data",
   "gcp-org-p-privacy-tools",
   "gcp-org-p-reporting"
+  "gcp-org-p-security"
+  "gcp-org-p-network-host"
 ]
 
 folder_id       = "your-folder-id"          # <-- Replace with your Folder ID
