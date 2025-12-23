@@ -1,5 +1,5 @@
 region           = "asia-south1"
-host_project_id  = "gcp-org-p-governance"
+host_project_id  = "gcp-org-p-network-host"
 host_subnet_cidr = "10.0.0.0/24" # Assuming 10.0.x.0/24 is 10.0.0.0/24
 
 service_projects_config = {
