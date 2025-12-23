@@ -1,29 +1,29 @@
 region           = "asia-south1"
-host_project_id  = "your-network-host-project-id"
+host_project_id  = "gcp-org-p-governance"
 host_subnet_cidr = "10.0.0.0/24" # Assuming 10.0.x.0/24 is 10.0.0.0/24
 
 service_projects_config = {
-  "your-security-service-project-id" = {
+"gcp-org-p-security" = {
     subnet_name = "security-subnet"
-    subnet_cidr = "10.0.6.0/24"
+    subnet_cidr = "10.0.5.0/24"
   },
-  "your-reporting-service-project-id" = {
+  "gcp-org-p-reporting" = {
     subnet_name = "reporting-subnet"
     subnet_cidr = "10.0.5.0/24"
   },
-  "your-privacy-tool-project-id" = {
+  "gcp-org-p-privacy-tools" = {
     subnet_name = "privacy-subnet"
     subnet_cidr = "10.0.4.0/24"
   },
-  "your-non-confidential-data-project-id" = {
+  "gcp-org-p-non-confi-data" = {
     subnet_name = "non-confidential-subnet"
     subnet_cidr = "10.0.3.0/24"
   },
-  "your-confidential-data-project-id" = {
+  "gcp-org-p-confi-data" = {
     subnet_name = "confidential-subnet"
     subnet_cidr = "10.0.2.0/24"
   },
-  "your-data-gov-service-project-id" = {
+  "gcp-org-p-governance" = {
     subnet_name = "data-gov-subnet"
     subnet_cidr = "10.0.1.0/24"
   }
